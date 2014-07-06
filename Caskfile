@@ -20,8 +20,9 @@ cask install github
 cask install postgres
 cask install hydra
 cask install transmission
+cask install iterm
 
-brew cask install keyremap4macbook
-brew cask install seil
+cask install keyremap4macbook
+cask install seil
 
 cask install sublime-text3

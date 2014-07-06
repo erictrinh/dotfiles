@@ -19,8 +19,9 @@ git config --global user.email "et.trinity@gmail.com"
 sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/bin/subl
 
 # symlink dotfiles into home
-gem install homesick
-homesick symlink $dir/..
+sudo gem install homesick
+homesick clone erictrinh/dotfiles
+homesick symlink dotfiles
 
 curl -sSL https://get.rvm.io | bash
 
