@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+      <name>Remap Caps Lock to Hyper</name>
+      <appendix>OS X doesn't have a Hyper. This maps Caps Lock to Control + Shift + Option + Command.</appendix>
+
+      <identifier>caps_to_hyper</identifier>
+
+      <autogen>
+          --KeyToKey--
+          KeyCode::F19,
+
+          KeyCode::COMMAND_L,
+          ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
+      </autogen>
+  </item>
+
+  <item>
+    <name>Finder Navigation</name>
+      <appendix>Remap Enter to open a directory, and Backslash to move up a directory in Finder.</appendix>
+    <identifier>private.nav_finder</identifier>
+    <only>FINDER</only>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::RETURN, ModifierFlag::SHIFT_R,
+
+      KeyCode::RETURN
+    </autogen>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::RETURN,
+
+      KeyCode::O, ModifierFlag::COMMAND_L
+    </autogen>
+
+    <autogen>
+      --KeyToKey--
+      KeyCode::BACKSLASH,
+
+      KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L
+    </autogen>
+  </item>
+
+</root>

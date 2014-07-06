@@ -1,0 +1,27 @@
+install caskroom/cask/brew-cask
+tap caskroom/versions
+
+# quicklook plugins
+cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
+
+cask install dropbox
+cask install google-chrome
+cask install firefox
+cask install spotify
+cask install onepassword
+cask install caffeine
+cask install little-snitch
+cask install hipchat
+cask install skype
+cask install mplayerx
+cask install the-unarchiver
+cask install handbrake
+cask install github
+cask install postgres
+cask install hydra
+cask install transmission
+
+brew cask install keyremap4macbook
+brew cask install seil
+
+cask install sublime-text3
