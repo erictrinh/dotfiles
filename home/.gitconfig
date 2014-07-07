@@ -1,0 +1,16 @@
+[user]
+  name = Eric Trinh
+  email = et.trinity@gmail.com
+
+# URL shorthands
+# gh:erictrinh/dotfiles
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "gh:"
+  pushInsteadOf = "git://github.com/"
+
+# gist:1234567
+[url "git@gist.github.com:"]
+  insteadOf = "gist:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"

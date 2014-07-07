@@ -1,0 +1,14 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*~
+
+# OS or Editor folders
+.DS_Store
+.cache
+
+# Node.js package manager
+/node_modules
+/npm-debug.log
