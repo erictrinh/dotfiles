@@ -11,10 +11,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew bundle $dir/Brewfile
 brew bundle $dir/Caskfile
 
-# setup git stuff
-git config --global user.name "Eric Trinh"
-git config --global user.email "et.trinity@gmail.com"
-
 # symlink subl
 sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/bin/subl
 
