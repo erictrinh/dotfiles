@@ -1,4 +1,4 @@
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( cd "$( dirname "$0" )" && pwd )"
 
 for entry in "$dir/prefs"/*.plist; do
   echo "Creating symlink to ${entry##*/} ~/Library/Preferences directory."

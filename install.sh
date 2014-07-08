@@ -1,7 +1,7 @@
 sudo -v
 
 # var to this directory
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir="$( cd "$( dirname "$0" )" && pwd )"
 
 # symlinks to set up caps lock as the super key
 sh $dir/setup_super.sh

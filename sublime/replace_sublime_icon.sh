@@ -1,4 +1,4 @@
-THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+THIS_DIR="$( cd "$( dirname "$0" )" && pwd )"
 SUBLIME_PATH="$HOME/Applications"
 SUBLIME_3_NAME="Sublime Text.app"
 
