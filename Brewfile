@@ -8,6 +8,7 @@ update
 upgrade
 
 install git
+install fasd
 install node
 install mongodb
 install heroku-toolbelt
