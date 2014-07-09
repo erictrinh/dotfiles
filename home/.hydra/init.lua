@@ -1,4 +1,3 @@
--- refers to grid.lua in this directory, taken from the Hydra wiki: https://github.com/sdegutis/hydra/wiki/Useful-Hydra-libraries
 require "config"
 
 hydra.alert "Hail Hydra."
