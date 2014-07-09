@@ -1,4 +1,4 @@
-require "config"
+dofile(package.searchpath("config", package.path)) -- load config file
 
 hydra.alert "Hail Hydra."
 
