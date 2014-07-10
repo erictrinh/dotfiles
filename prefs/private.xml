@@ -43,4 +43,18 @@
     </autogen>
   </item>
 
+  <item>
+    <name>F2, F3, F4 to Speaker Controls on Microsoft Keyboard</name>
+    <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NANO_TRANSCEIVER_2-1</device_only>
+    <appendix>* F1: Music Play</appendix>
+    <appendix>* F2: Volume Mute</appendix>
+    <appendix>* F3: Volume Down</appendix>
+    <appendix>* F4: Volume Up</appendix>
+    <identifier>private.volume_for_sculpt</identifier>
+    <autogen>__KeyToKey__ KeyCode::F1, ConsumerKeyCode::MUSIC_PLAY</autogen>
+    <autogen>__KeyToKey__ KeyCode::F2, ConsumerKeyCode::VOLUME_MUTE</autogen>
+    <autogen>__KeyToKey__ KeyCode::F3, ConsumerKeyCode::VOLUME_DOWN</autogen>
+    <autogen>__KeyToKey__ KeyCode::F4, ConsumerKeyCode::VOLUME_UP</autogen>
+  </item>
+
 </root>
