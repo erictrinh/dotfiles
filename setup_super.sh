@@ -5,5 +5,5 @@ for entry in "$dir/prefs"/*.plist; do
   ln -s $entry ~/Library/Preferences/${entry##*/}
 done
 
-mkdir -p ~/Library/Application\ Support/KeyRemap4MacBook
-ln -s $dir/prefs/private.xml ~/Library/Application\ Support/KeyRemap4MacBook/private.xml
+mkdir -p ~/Library/Application\ Support/Karabiner
+ln -s $dir/prefs/private.xml ~/Library/Application\ Support/Karabiner/private.xml

@@ -22,7 +22,7 @@ cask install hydra
 cask install transmission
 cask install iterm
 
-cask install keyremap4macbook
+cask install karabiner
 cask install seil
 
 cask install sublime-text3
