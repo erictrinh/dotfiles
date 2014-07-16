@@ -20,31 +20,23 @@ local super = {'cmd', 'alt', 'ctrl', 'shift'}
 local function centermouse()
   hydra.alert('Center Mouse', 0.75)
   local screenrect = window.focusedwindow():screen():frame_without_dock_or_menu()
-  local halfscreenwidth = screenrect.w / 2
-  local halfscreenheight = screenrect.h / 2
-  local newframe = {
-    x = halfscreenwidth,
-    y = halfscreenheight
-  }
-  mouse.set(newframe)
+  mouse.set({
+    x = screenrect.w / 2,
+    y = screenrect.h / 2
+  })
 end
 
-function movewindow_righthalf()
+local function grid(win, col, totalcols, span)
+  print(win, col, totalcols, span)
   local win = window.focusedwindow()
+  local screen = win:screen():frame_without_dock_or_menu()
   local newframe = win:screen():frame_without_dock_or_menu()
-  newframe.w = newframe.w / 2
-  newframe.x = newframe.x + newframe.w
+  newframe.w = screen.w / totalcols * span
+  newframe.x = (col - 1) * (screen.w / totalcols) + screen.x
   win:setframe(newframe)
 end
 
-function movewindow_lefthalf()
-  local win = window.focusedwindow()
-  local newframe = win:screen():frame_without_dock_or_menu()
-  newframe.w = newframe.w / 2
-  win:setframe(newframe)
-end
-
-function movewindow_tophalf()
+local function movewindow_tophalf()
   local win = window.focusedwindow()
   local winframe = win:frame()
   local newframe = win:screen():frame_without_dock_or_menu()
@@ -54,7 +46,7 @@ function movewindow_tophalf()
   win:setframe(newframe)
 end
 
-function movewindow_bottomhalf()
+local function movewindow_bottomhalf()
   local win = window.focusedwindow()
   local winframe = win:frame()
   local newframe = win:screen():frame_without_dock_or_menu()
@@ -65,13 +57,13 @@ function movewindow_bottomhalf()
   win:setframe(newframe)
 end
 
-function fullscreen()
+local function fullscreen()
   local win = window.focusedwindow()
   local newframe = win:screen():frame_without_dock_or_menu()
   win:setframe(newframe)
 end
 
-function togglescreen()
+local function togglescreen()
   local win = window.focusedwindow()
   local winframe = win:frame()
   local currscreen = win:screen()
@@ -88,6 +80,20 @@ function togglescreen()
   })
 end
 
+local gridsize = 3
+local lastKey = 0
+local lastTime = 0
+local function processKey(key)
+  local thisTime = os.time()
+  if (thisTime - lastTime <= 1) then
+    grid(window.focusedwindow(), math.min(key, lastKey), gridsize, math.abs(key - lastKey) + 1)
+  else
+    grid(window.focusedwindow(), key, gridsize, 1)
+  end
+
+  lastTime = thisTime
+  lastKey = key
+end
 
 hotkey.bind(super, 'DELETE', centermouse)
 hotkey.bind(super, '`', togglescreen)
@@ -95,39 +101,45 @@ hotkey.bind(super, '`', togglescreen)
 hotkey.bind(super, 'RETURN', fullscreen)
 hotkey.bind(super, 'DOWN', movewindow_bottomhalf)
 hotkey.bind(super, 'UP', movewindow_tophalf)
-hotkey.bind(super, 'LEFT', movewindow_lefthalf)
-hotkey.bind(super, 'RIGHT', movewindow_righthalf)
+
+hotkey.bind(super, '-', function()
+  gridsize = math.max(gridsize - 1, 3)
+  hydra.alert("Grid is now " .. gridsize)
+end)
+hotkey.bind(super, '=', function()
+  gridsize = math.min(gridsize + 1, 9)
+  hydra.alert("Grid is now " .. gridsize)
+end)
+hotkey.bind(super, 'LEFT', function() grid(window.focusedwindow(), 1, 2, 1) end)
+hotkey.bind(super, 'RIGHT', function() grid(window.focusedwindow(), 2, 2, 1) end)
+
+hotkey.bind(super, '1', function() processKey(1) end)
+hotkey.bind(super, '2', function() processKey(2) end)
+hotkey.bind(super, '3', function() processKey(3) end)
+hotkey.bind(super, '4', function() processKey(4) end)
+hotkey.bind(super, '5', function() processKey(5) end)
+hotkey.bind(super, '6', function() processKey(6) end)
+hotkey.bind(super, '7', function() processKey(7) end)
+hotkey.bind(super, '8', function() processKey(8) end)
+hotkey.bind(super, '9', function() processKey(9) end)
 
 for shortcut, app in pairs(ext.config) do
   hotkey.bind(super, shortcut, function() application.launchorfocus(app) end)
 end
 
--- hotkey.bind(mash, ';', function() ext.grid.snap(window.focusedwindow()) end)
--- hotkey.bind(mash, "'", function() fnutils.map(window.visiblewindows(), ext.grid.snap) end)
-
--- hotkey.bind(mash, '=', function() ext.grid.adjustwidth( 1) end)
--- hotkey.bind(mash, '-', function() ext.grid.adjustwidth(-1) end)
-
--- hotkey.bind(mashshift, 'H', function() window.focusedwindow():focuswindow_west() end)
--- hotkey.bind(mashshift, 'L', function() window.focusedwindow():focuswindow_east() end)
--- hotkey.bind(mashshift, 'K', function() window.focusedwindow():focuswindow_north() end)
--- hotkey.bind(mashshift, 'J', function() window.focusedwindow():focuswindow_south() end)
-
--- hotkey.bind(mash, 'M', ext.grid.maximize_window)
-
--- hotkey.bind(mash, 'N', ext.grid.pushwindow_nextscreen)
--- hotkey.bind(mash, 'P', ext.grid.pushwindow_prevscreen)
-
--- hotkey.bind(mash, 'J', ext.grid.pushwindow_down)
--- hotkey.bind(mash, 'K', ext.grid.pushwindow_up)
--- hotkey.bind(mash, 'H', ext.grid.pushwindow_left)
--- hotkey.bind(mash, 'L', ext.grid.pushwindow_right)
-
--- hotkey.bind(mash, 'U', ext.grid.resizewindow_taller)
--- hotkey.bind(mash, 'O', ext.grid.resizewindow_wider)
--- hotkey.bind(mash, 'I', ext.grid.resizewindow_thinner)
-
 hotkey.bind(mash, 'X', logger.show)
-hotkey.bind(mash, "R", repl.open)
+hotkey.bind(mash, 'R', repl.open)
 
-updates.check()
+function checkforupdates()
+  -- I'm fine with making this a global; then I can call it in the REPL if I want.
+  updates.check(function(hasone)
+      if hasone then
+        notify.show("Hydra update available", "Go download it!", "Click here to see the release notes.", "hasupdate")
+      end
+  end)
+end
+notify.register("hasupdate", function() os.execute("open " .. updates.changelogurl) end)
+
+checkforupdates()
+
+timer.new(timer.days(1), checkforupdates):start()
