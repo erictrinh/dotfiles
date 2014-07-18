@@ -84,6 +84,10 @@ local gridsize = 3
 local lastKey = 0
 local lastTime = 0
 local function processKey(key)
+  if key > gridsize then
+    do return end
+  end
+
   local thisTime = os.time()
   if (thisTime - lastTime <= 1) then
     grid(window.focusedwindow(), math.min(key, lastKey), gridsize, math.abs(key - lastKey) + 1)
