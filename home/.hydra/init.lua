@@ -3,9 +3,9 @@ dofile(package.searchpath("config", package.path)) -- load config file
 hydra.alert "Hail Hydra."
 
 pathwatcher.new(os.getenv("HOME") .. "/.hydra/", hydra.reload):start()
-autolaunch.set(true)
+hydra.autolaunch.set(true)
 
-menu.show(function()
+hydra.menu.show(function()
     return {
       {title = "About Hydra", fn = hydra.showabout},
       {title = "-"},
@@ -136,7 +136,7 @@ hotkey.bind(mash, 'R', repl.open)
 
 function checkforupdates()
   -- I'm fine with making this a global; then I can call it in the REPL if I want.
-  updates.check(function(hasone)
+  hydra.updates.check(function(hasone)
       if hasone then
         notify.show("Hydra update available", "Go download it!", "Click here to see the release notes.", "hasupdate")
       end
