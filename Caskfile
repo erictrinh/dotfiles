@@ -18,7 +18,6 @@ cask install the-unarchiver
 cask install handbrake
 cask install github
 cask install postgres
-cask install hydra
 cask install transmission
 cask install iterm
 
