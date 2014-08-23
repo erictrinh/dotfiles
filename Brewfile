@@ -12,5 +12,7 @@ install fasd
 install node
 install mongodb
 install heroku-toolbelt
+install imagemagick
+install postgresql
 
 cleanup
