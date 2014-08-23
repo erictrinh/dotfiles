@@ -13,13 +13,20 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "shekbook"
-sudo scutil --set HostName "shekbook"
-sudo scutil --set LocalHostName "shekbook"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "shekbook"
+echo 'Enter new hostname of the machine (e.g. macbook-erictrinh)'
+  read hostname
+  echo "Setting new hostname to $hostname..."
+  sudo scutil --set HostName "$hostname"
+  sudo scutil --set LocalHostName "$hostname"
 
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
+  # compname is hostname with . instead of -
+  compname=$(sudo scutil --get HostName | tr '-' '.')
+  echo "Setting computer name to $compname"
+  sudo scutil --set ComputerName "$compname"
+  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
+
+# Set standby delay to 18 hours (default is 1 hour)
+sudo pmset -a standbydelay 64800
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -318,7 +325,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
+# defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
