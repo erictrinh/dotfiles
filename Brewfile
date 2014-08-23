@@ -14,5 +14,7 @@ install mongodb
 install heroku-toolbelt
 install imagemagick
 install postgresql
+install ffmpeg
+install gifsicle
 
 cleanup

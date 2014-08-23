@@ -25,3 +25,5 @@ cask install karabiner
 cask install seil
 
 cask install sublime-text3
+
+cask install xquartz
