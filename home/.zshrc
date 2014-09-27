@@ -22,7 +22,11 @@ alias bi='bower install'
 alias bis='bower install --save'
 alias ni='npm install'
 alias nis='npm install --save'
+alias nisd='npm install --save-dev'
 alias nig='npm install --global'
+
+# Defaults for mdfind
+alias f='mdfind -onlyin .'
 
 # easy git cloning
 function clone() {
