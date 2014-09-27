@@ -25,9 +25,6 @@ echo 'Enter new hostname of the machine (e.g. macbook-erictrinh)'
   sudo scutil --set ComputerName "$compname"
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
 
-# Set standby delay to 18 hours (default is 1 hour)
-sudo pmset -a standbydelay 64800
-
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
@@ -515,7 +512,7 @@ defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnab
 ###############################################################################
 
 # Hide Spotlight tray-icon (and subsequent helper)
-#sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
