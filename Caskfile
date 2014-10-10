@@ -1,10 +1,12 @@
 install caskroom/cask/brew-cask
 tap caskroom/versions
+tap caskroom/fonts
 
 # quicklook plugins
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
 
 cask install alfred
+cask alfred
 cask install dropbox
 cask install google-chrome
 cask install google-chrome-canary
@@ -23,9 +25,17 @@ cask install postgres
 cask install transmission
 cask install iterm
 
+cask install ember
+cask install sketch
+
 cask install karabiner
 cask install seil
 
 cask install sublime-text3
 
 cask install xquartz
+
+# fonts
+cask install font-roboto
+cask install font-open-sans
+cask install font-source-sans-pro
