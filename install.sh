@@ -27,4 +27,13 @@ sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr
 
 curl -sSL https://get.rvm.io | bash
 
+echo "Setting up wallpaper"
+wallpaper="$thisdir/wallpaper/dlanham-Tinnitus.jpg"
+
+osascript <<EOF
+tell application "Finder"
+set desktop picture to POSIX file "$wallpaper"
+end tell
+EOF
+
 echo "Don't forget to disable caps lock key via System Preferences > Keyboard"
