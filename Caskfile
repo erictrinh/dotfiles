@@ -5,8 +5,6 @@ tap caskroom/fonts
 # quicklook plugins
 cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
 
-cask install alfred
-cask alfred
 cask install dropbox
 cask install google-chrome
 cask install google-chrome-canary
