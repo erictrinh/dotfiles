@@ -19,7 +19,6 @@ cask install mplayerx
 cask install the-unarchiver
 cask install handbrake
 cask install github
-cask install postgres
 cask install transmission
 cask install iterm
 
