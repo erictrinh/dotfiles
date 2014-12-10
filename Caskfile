@@ -20,6 +20,7 @@ cask install handbrake
 cask install github
 cask install transmission
 cask install iterm
+cask install psequel
 
 cask install ember
 cask install sketch
