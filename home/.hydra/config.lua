@@ -2,6 +2,7 @@ ext.config = {
   F = 'Finder',
   C = 'Google Chrome',
   X = 'Xcode',
+  K = 'Sketch',
   G = 'GitHub',
   S = 'Sublime Text',
   Y = 'Spotify',
