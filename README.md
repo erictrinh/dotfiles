@@ -7,3 +7,6 @@ To bootstrap a new system, run
 ```
 
 You can also clone this repo and run `./install.sh`. Run `./osx.sh` for OSX defaults.
+
+## Sublime Icon
+Alternative Sublime icon is from [Jannik Siebert](https://dribbble.com/shots/1836652-Final-Round-Sublime-Icon).
