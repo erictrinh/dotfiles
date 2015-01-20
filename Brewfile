@@ -8,8 +8,9 @@ update
 upgrade
 
 install git
+install tree
 install fasd
-install node
+install nvm
 install mongodb
 install heroku-toolbelt
 install imagemagick
