@@ -28,7 +28,7 @@
   default = simple
 
 [core]
-  editor = subl
+  editor = vim
   excludesfile = ~/.gitignore
 
 [format]

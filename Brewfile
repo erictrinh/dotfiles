@@ -7,6 +7,7 @@ update
 # Upgrade any already-installed formulae
 upgrade
 
+install vim
 install git
 install tree
 install fasd
