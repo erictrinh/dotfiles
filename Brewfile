@@ -10,7 +10,6 @@ upgrade
 install git
 install tree
 install fasd
-install nvm
 install mongodb
 install heroku-toolbelt
 install imagemagick

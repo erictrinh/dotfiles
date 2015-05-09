@@ -26,6 +26,7 @@ brew bundle $thisdir/Caskfile
 sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/bin/subl
 
 curl -sSL https://get.rvm.io | bash
+curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 
 echo "Setting up wallpaper"
 wallpaper="$thisdir/wallpaper/dlanham-Tinnitus.jpg"
