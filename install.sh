@@ -4,8 +4,6 @@ sudo -v
 
 # setup zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-git clone https://github.com/sindresorhus/pure.git "${ZDOTDIR:-$HOME}/.pure"
-ln -s "${ZDOTDIR:-$HOME}/.pure/pure.zsh" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_pure_setup"
 
 # symlink dotfiles into home
 sudo gem install homesick
