@@ -27,7 +27,7 @@ curl -sSL https://get.rvm.io | bash
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 
 echo "Setting up wallpaper"
-wallpaper="$thisdir/wallpaper/dlanham-Tinnitus.jpg"
+wallpaper="$thisdir/wallpaper/dlanham-SpaceDoggy3.jpg"
 
 osascript <<EOF
 tell application "Finder"
