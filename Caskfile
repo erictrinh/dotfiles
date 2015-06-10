@@ -24,12 +24,12 @@ cask install psequel
 cask install anybar
 
 cask install ember
-cask install sketch
 
 cask install karabiner
 cask install seil
 
 cask install sublime-text3
+cask install macvim
 
 cask install xquartz
 
