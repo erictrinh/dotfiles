@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # potential fix for subl command sometimes failing to open dirs
-alias sub="open -a 'Sublime Text'"
+alias s="open -a 'Sublime Text'"
 
 # Short-cuts for copy-paste.
 alias c='pbcopy'
