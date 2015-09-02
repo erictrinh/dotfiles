@@ -38,3 +38,4 @@ cask install font-roboto
 cask install font-open-sans
 cask install font-source-sans-pro
 cask install font-bree-serif
+cask install font-hack
