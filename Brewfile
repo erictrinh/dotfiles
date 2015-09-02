@@ -17,5 +17,6 @@ install imagemagick
 install postgresql
 install ffmpeg
 install gifsicle
+install the_silver_searcher
 
 cleanup
