@@ -74,8 +74,6 @@ gifify() {
   fi
 }
 
-export EDITOR=vim
-
 unsetopt auto_name_dirs # fix for showing "RVM_PROJECT_PATH" as shell prompt
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
