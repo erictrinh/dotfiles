@@ -1,4 +1,3 @@
-install caskroom/cask/brew-cask
 tap caskroom/versions
 tap caskroom/fonts
 
