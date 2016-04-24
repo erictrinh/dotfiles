@@ -18,5 +18,12 @@ install postgresql
 install ffmpeg
 install gifsicle
 install the_silver_searcher
+install diff-so-fancy
+
+# http://facebook.github.io/PathPicker/
+install fpp
+
+# https://github.com/junegunn/fzf
+install fzf
 
 cleanup
