@@ -19,6 +19,7 @@ install ffmpeg
 install gifsicle
 install the_silver_searcher
 install diff-so-fancy
+install node
 
 # http://facebook.github.io/PathPicker/
 install fpp
