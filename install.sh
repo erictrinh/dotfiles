@@ -12,9 +12,6 @@ homesick symlink dotfiles
 
 thisdir=`homesick show_path dotfiles`
 
-# symlinks to set up caps lock as the super key
-sh $thisdir/setup_super.sh
-
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew bundle $thisdir/Brewfile
