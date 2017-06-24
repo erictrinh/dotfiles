@@ -5,6 +5,8 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# zmodload 'zsh/zprof'
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -12,6 +14,7 @@ fi
 
 # potential fix for subl command sometimes failing to open dirs
 alias s="open -a 'Sublime Text'"
+alias o="open -a 'Forklift'"
 
 # Short-cuts for copy-paste.
 alias c='pbcopy'
@@ -27,6 +30,10 @@ alias nig='npm install --global'
 
 # Defaults for mdfind
 alias f='mdfind -onlyin .'
+
+function flatten() {
+  pdf2ps $1 - | ps2pdf - $2
+}
 
 # easy git cloning
 function clone() {
@@ -60,22 +67,6 @@ function ram() {
   fi
 }
 
-gifify() {
-  if [[ -n "$1" ]]; then
-    if [[ $2 == '--good' ]]; then
-      ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
-      time convert -verbose +dither -layers Optimize -resize 600x600\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > $1.gif
-      rm -f out-static*.png
-    else
-      ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $1.gif
-    fi
-  else
-    echo "proper usage: gifify <input_movie.mov>"
-  fi
-}
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-unsetopt auto_name_dirs # fix for showing "RVM_PROJECT_PATH" as shell prompt
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="/Users/erictrinh/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# zprof
