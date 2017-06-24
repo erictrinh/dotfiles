@@ -1,31 +1,61 @@
-# Install command-line tools using Homebrew
-# Usage: `brew bundle Brewfile`
+cask_args appdir: '/Applications'
 
-# Make sure we’re using the latest Homebrew
-update
+tap 'caskroom/cask'
 
-# Upgrade any already-installed formulae
-upgrade
+brew 'vim'
+brew 'git'
+brew 'tree'
+brew 'fasd'
+brew 'mongodb'
+brew 'heroku'
+brew 'imagemagick'
+brew 'postgresql'
+brew 'ffmpeg'
+brew 'gifsicle'
+brew 'the_silver_searcher'
+brew 'diff-so-fancy'
+brew 'node'
+brew 'rbenv'
 
-install vim
-install git
-install tree
-install fasd
-install mongodb
-install heroku
-install imagemagick
-install postgresql
-install ffmpeg
-install gifsicle
-install the_silver_searcher
-install diff-so-fancy
-install node
-install rbenv
+tap 'caskroom/versions'
+tap 'caskroom/fonts'
 
-# http://facebook.github.io/PathPicker/
-install fpp
+# quicklook plugins
+cask 'qlcolorcode'
+cask 'qlstephen'
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'qlprettypatch'
+cask 'quicklook-csv'
+cask 'betterzipql'
+cask 'webp-quicklook'
+cask 'suspicious-package'
 
-# https://github.com/junegunn/fzf
-install fzf
+cask 'dropbox'
+cask 'google-chrome'
+cask 'google-chrome-canary'
+cask 'firefox'
+cask 'spotify'
+cask 'caffeine'
+cask 'little-snitch'
+cask 'hipchat'
+cask 'skype'
+cask 'the-unarchiver'
+cask 'github'
+cask 'transmission'
+cask 'iterm'
+cask 'datagrip'
+cask 'forklift'
 
-cleanup
+cask 'sublime-text3'
+cask 'macvim'
+
+cask 'xquartz'
+
+# fonts
+cask 'font-roboto'
+cask 'font-open-sans'
+cask 'font-source-sans-pro'
+cask 'font-bree-serif'
+cask 'font-hack'
+cask 'font-roboto-mono'

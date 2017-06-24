@@ -13,14 +13,12 @@ homesick symlink dotfiles
 thisdir=`homesick show_path dotfiles`
 
 # install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-brew bundle $thisdir/Brewfile
-brew bundle $thisdir/Caskfile
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew tap Homebrew/bundle
+brew bundle
 
 rbenv init
-
-# symlink subl
-sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/bin/subl
 
 echo "Setting up wallpaper"
 wallpaper="$thisdir/wallpaper/dlanham-SpaceDoggy3.jpg"
