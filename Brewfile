@@ -12,7 +12,7 @@ install git
 install tree
 install fasd
 install mongodb
-install heroku-toolbelt
+install heroku
 install imagemagick
 install postgresql
 install ffmpeg
@@ -20,6 +20,7 @@ install gifsicle
 install the_silver_searcher
 install diff-so-fancy
 install node
+install rbenv
 
 # http://facebook.github.io/PathPicker/
 install fpp
