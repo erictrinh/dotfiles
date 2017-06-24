@@ -28,11 +28,13 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'history' \
   'utility' \
+  'completion' \
   'fasd' \
   'osx' \
   'git' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'ruby' \
   'prompt'
 
 #
