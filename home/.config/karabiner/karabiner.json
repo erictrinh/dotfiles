@@ -1,0 +1,16 @@
+{
+  "profiles": [
+    {
+      "name": "Default profile",
+      "selected": true,
+      "simple_modifications": {
+      },
+      "standalone_keys": {
+        "caps_lock": "escape"
+      },
+      "one_to_many_mappings": {
+        "caps_lock": ["left_control", "left_shift", "left_option", "left_command"]
+      }
+    }
+  ]
+}
