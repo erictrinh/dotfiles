@@ -6,6 +6,8 @@
   user = erictrinh
 
 [alias]
+  year = !git log --author=\"`git config user.name`\" --before={`date "+%Y-%m-%d"`} --after={`date -v-1y "+%Y-%m-01"`} --reverse --pretty=format:\"%cd  %h  %s\" --date=short
+
   br = branch
   cb = "!sh -c 'git branch $1 && git ch $1' -"
   ctb = "!sh -c 'git cb topics/$1' -"
@@ -61,8 +63,9 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 	required = true
 [pager]
 	diff = diff-so-fancy | less --tabs=1,5 -RFX
