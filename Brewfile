@@ -49,6 +49,7 @@ cask 'transmission'
 cask 'iterm2'
 cask 'datagrip'
 cask 'forklift'
+cask '1password'
 
 cask 'sublime-text'
 cask 'macvim'

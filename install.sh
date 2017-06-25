@@ -1,6 +1,11 @@
 #!/bin/zsh
-
 sudo -v
+
+# install homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew tap Homebrew/bundle
+brew bundle
 
 # setup zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -12,13 +17,8 @@ homesick symlink dotfiles
 
 thisdir=`homesick show_path dotfiles`
 
-# install homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-brew tap Homebrew/bundle
-brew bundle
-
-rbenv init
+echo "Setting default shell to zsh"
+chsh -s $(which zsh)
 
 echo "Setting up wallpaper"
 wallpaper="$thisdir/wallpaper/dlanham-SpaceDoggy3.jpg"
@@ -28,5 +28,3 @@ tell application "Finder"
 set desktop picture to POSIX file "$wallpaper"
 end tell
 EOF
-
-echo "Don't forget to disable caps lock key via System Preferences > Keyboard"
