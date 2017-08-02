@@ -7,6 +7,9 @@ sudo -v
 brew tap Homebrew/bundle
 brew bundle
 
+brew link imagemagick@6 --force
+brew link qt@5.5 --force
+
 # setup zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
