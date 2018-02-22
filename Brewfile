@@ -26,6 +26,7 @@ cask 'suspicious-package'
 cask 'quicklookase'
 cask 'qlvideo'
 
+cask 'karabiner-elements'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-chrome-canary'
