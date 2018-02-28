@@ -32,7 +32,6 @@ cask 'google-chrome'
 cask 'google-chrome-canary'
 cask 'firefox'
 cask 'spotify'
-cask 'caffeine'
 cask 'little-snitch'
 cask 'skype'
 cask 'the-unarchiver'
@@ -43,7 +42,7 @@ cask 'forklift'
 cask '1password'
 cask 'keepingyouawake'
 cask 'daisydisk'
-
+cask 'bartender'
 cask 'sublime-text'
 
 # fonts
