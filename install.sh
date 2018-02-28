@@ -7,6 +7,9 @@ sudo -v
 brew tap Homebrew/bundle
 brew bundle
 
+# enable mac os dark mode
+dark-mode on
+
 # setup zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 

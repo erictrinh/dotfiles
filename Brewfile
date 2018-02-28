@@ -11,6 +11,7 @@ brew 'the_silver_searcher'
 brew 'diff-so-fancy'
 brew 'node'
 brew 'rbenv'
+brew 'dark-mode'
 
 tap 'caskroom/versions'
 tap 'caskroom/fonts'
