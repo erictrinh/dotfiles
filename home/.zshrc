@@ -14,7 +14,7 @@ fi
 
 # potential fix for subl command sometimes failing to open dirs
 alias s="open -a 'Sublime Text'"
-alias o="open -a 'Forklift'"
+alias o="open -a 'Finder'"
 
 # Short-cuts for copy-paste.
 alias c='pbcopy'
