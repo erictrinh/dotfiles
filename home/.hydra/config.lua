@@ -1,9 +1,10 @@
 ext.config = {
-  F = 'Forklift',
+  F = 'Finder',
   C = 'Google Chrome',
   E = 'Slack',
   G = 'GitHub Desktop',
   S = 'Sublime Text',
+  O = 'Soulver',
   D = 'DataGrip',
   Y = 'Spotify',
   L = 'Calendar',
