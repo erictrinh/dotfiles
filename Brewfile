@@ -46,6 +46,7 @@ cask 'keepingyouawake'
 cask 'daisydisk'
 cask 'bartender'
 cask 'sublime-text'
+cask 'slack'
 
 # fonts
 cask 'font-roboto'
