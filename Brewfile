@@ -28,6 +28,7 @@ cask 'quicklookase'
 cask 'qlvideo'
 
 cask 'karabiner-elements'
+cask 'hammerspoon'
 cask 'dropbox'
 cask 'google-chrome'
 cask 'google-chrome-canary'
