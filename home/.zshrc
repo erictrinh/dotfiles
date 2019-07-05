@@ -21,8 +21,6 @@ alias c='pbcopy'
 alias p='pbpaste'
 
 # Package managers.
-alias bi='bower install'
-alias bis='bower install --save'
 alias ni='npm install'
 alias nis='npm install --save'
 alias nisd='npm install --save-dev'
@@ -31,9 +29,7 @@ alias nig='npm install --global'
 # Defaults for mdfind
 alias f='mdfind -onlyin .'
 
-function flatten() {
-  pdf2ps $1 - | ps2pdf - $2
-}
+alias sw='git checkout $(git branch --sort=-committerdate | fzf --height 40%)'
 
 # easy git cloning
 function clone() {
@@ -70,3 +66,5 @@ function ram() {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
