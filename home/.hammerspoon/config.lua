@@ -5,12 +5,9 @@ config = {
   E = 'Slack',
   G = 'GitHub Desktop',
   S = 'Sublime Text',
-  O = 'Soulver',
-  D = 'DataGrip',
+  O = 'Soulver 3',
   Y = 'Spotify',
-  L = 'Calendar',
   M = 'Messages',
-  N = 'Notability',
   T = 'iTerm',
   P = 'Preview'
 }
