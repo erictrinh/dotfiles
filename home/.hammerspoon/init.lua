@@ -85,8 +85,8 @@ end
 hs.hotkey.bind(super, '`', togglescreen)
 
 hs.hotkey.bind(super, 'RETURN', fullscreen)
-hs.hotkey.bind(super, 'DOWN', movewindow_bottomhalf)
-hs.hotkey.bind(super, 'UP', movewindow_tophalf)
+hs.hotkey.bind(super, 'j', movewindow_bottomhalf)
+hs.hotkey.bind(super, 'k', movewindow_tophalf)
 
 -- hs.hotkey.bind(super, 'H', function()
 --   hs.application.launchOrFocus("Things3")
@@ -104,8 +104,8 @@ hs.hotkey.bind(super, '=', function()
   gridsize = math.min(gridsize + 1, 4)
   hs.alert("Grid is now " .. gridsize)
 end)
-hs.hotkey.bind(super, 'LEFT', function() grid(hs.window.focusedWindow(), 1, 2, 1) end)
-hs.hotkey.bind(super, 'RIGHT', function() grid(hs.window.focusedWindow(), 2, 2, 1) end)
+hs.hotkey.bind(super, 'h', function() grid(hs.window.focusedWindow(), 1, 2, 1) end)
+hs.hotkey.bind(super, 'l', function() grid(hs.window.focusedWindow(), 2, 2, 1) end)
 
 hs.hotkey.bind(super, 'q', function() processKey(1) end)
 hs.hotkey.bind(super, 'w', function() processKey(2) end)
