@@ -107,10 +107,10 @@ end)
 hs.hotkey.bind(super, 'h', function() grid(hs.window.focusedWindow(), 1, 2, 1) end)
 hs.hotkey.bind(super, 'l', function() grid(hs.window.focusedWindow(), 2, 2, 1) end)
 
-hs.hotkey.bind(super, 'q', function() processKey(1) end)
-hs.hotkey.bind(super, 'w', function() processKey(2) end)
-hs.hotkey.bind(super, 'e', function() processKey(3) end)
-hs.hotkey.bind(super, 'r', function() processKey(4) end)
+hs.hotkey.bind(super, '1', function() processKey(1) end)
+hs.hotkey.bind(super, '2', function() processKey(2) end)
+hs.hotkey.bind(super, '3', function() processKey(3) end)
+hs.hotkey.bind(super, '4', function() processKey(4) end)
 
 for shortcut, app in pairs(config) do
   hs.hotkey.bind(super, shortcut, function() hs.application.launchOrFocus(app) end)
