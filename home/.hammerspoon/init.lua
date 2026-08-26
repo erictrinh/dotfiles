@@ -115,3 +115,27 @@ hs.hotkey.bind(super, '4', function() processKey(4) end)
 for shortcut, app in pairs(config) do
   hs.hotkey.bind(super, shortcut, function() hs.application.launchOrFocus(app) end)
 end
+
+local copyAlertStyle = {
+  fillColor = { white = 0.12, alpha = 0.95 },
+  strokeColor = { white = 1, alpha = 0.15 },
+  strokeWidth = 1,
+  radius = 10,
+  textColor = { white = 1 },
+  textSize = 16,
+  padding = 12,
+  atScreenEdge = 2,
+  fadeInDuration = 0.05,
+  fadeOutDuration = 0.15,
+}
+
+local copyAlert
+
+-- Keep this global so Hammerspoon retains the watcher.
+clipboardWatcher = hs.pasteboard.watcher.new(function()
+  if copyAlert then
+    hs.alert.closeSpecific(copyAlert, 0)
+  end
+
+  copyAlert = hs.alert.show("✓ Copied", copyAlertStyle, 0.65)
+end)
