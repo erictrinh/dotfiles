@@ -1,0 +1,23 @@
+#
+# zimfw modules. zimfw reads this file. Zsh never sources it directly.
+# After editing, open a new shell and the changes install themselves.
+# Run `zimfw update` to update the modules.
+#
+
+# Shell options: history, directory stack, globbing, job control.
+zmodule environment
+# Correct key bindings for Home, End, Delete, arrows and friends.
+zmodule input
+# Coloured ls, grep and less, plus ll, l and mkcd.
+zmodule utility
+
+# Prompt
+zmodule sindresorhus/pure --source async.zsh --source pure.zsh
+
+# Completion. zsh-completions must come before the completion module.
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+
+# These two must load last, in this order.
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search

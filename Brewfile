@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 brew 'git'
+brew 'zimfw'
 brew 'fzf'
 brew 'zoxide'
 brew 'diff-so-fancy'

@@ -38,11 +38,6 @@ else
   print -u2 "fnm isn't installed, so Node was skipped; rerun brew bundle, then: fnm install --lts && fnm default lts-latest"
 fi
 
-# Prezto
-if [[ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-fi
-
 # Tailscale: put its CLI on PATH (same as the app's "Install CLI" option), then
 # open the app to log in.
 if [[ -d /Applications/Tailscale.app ]]; then

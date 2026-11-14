@@ -1,16 +1,37 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # zmodload 'zsh/zprof'
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Vi key bindings. This has to run before zimfw loads the input module.
+bindkey -v
+
+# zimfw. Modules are listed in ~/.zimrc. The first shell after editing that
+# file installs any new modules and rebuilds ~/.zim/init.zsh.
+ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
+if [[ ! $ZIM_HOME/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-$HOME}/.zimrc} ]]; then
+  source ${HOMEBREW_PREFIX:-/opt/homebrew}/opt/zimfw/share/zimfw.zsh init
 fi
+source $ZIM_HOME/init.zsh
+
+# Settings kept from prezto that zim leaves out or sets differently.
+setopt CLOBBER                # zim sets NO_CLOBBER, which stops > from overwriting files
+setopt EXTENDED_HISTORY       # save timestamps in ~/.zsh_history
+setopt HIST_EXPIRE_DUPS_FIRST HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
+setopt COMBINING_CHARS        # show accented filenames correctly on macOS
+unsetopt FLOW_CONTROL         # free up Ctrl-S and Ctrl-Q
+
+alias g='git'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias find='noglob find'      # so find . -name *.js works without quotes
+
+# zim binds Up/Down to history-substring-search. Add j/k in vi normal mode.
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 alias o="open -a 'Finder'"
 
@@ -48,9 +69,9 @@ function ram() {
     done
     sum=$(echo "scale=2; $sum / 1024.0" | bc)
     if [[ $sum != "0" ]]; then
-      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+      print -P "%F{blue}${app}%f uses %F{green}${sum}%f MBs of RAM."
     else
-      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+      print -P "There are no processes with pattern '%F{blue}${app}%f' are running."
     fi
   fi
 }
