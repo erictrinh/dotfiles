@@ -10,10 +10,12 @@ bindkey -v
 # zimfw. Modules are listed in ~/.zimrc. The first shell after editing that
 # file installs any new modules and rebuilds ~/.zim/init.zsh.
 ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
-if [[ ! $ZIM_HOME/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-$HOME}/.zimrc} ]]; then
-  source ${HOMEBREW_PREFIX:-/opt/homebrew}/opt/zimfw/share/zimfw.zsh init
+ZIMFW=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/zimfw/share/zimfw.zsh
+if [[ -r $ZIMFW && ! $ZIM_HOME/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-$HOME}/.zimrc} ]]; then
+  source $ZIMFW init
 fi
-source $ZIM_HOME/init.zsh
+unset ZIMFW
+[[ -r $ZIM_HOME/init.zsh ]] && source $ZIM_HOME/init.zsh
 
 # Settings kept from prezto that zim leaves out or sets differently.
 setopt CLOBBER                # zim sets NO_CLOBBER, which stops > from overwriting files
@@ -88,7 +90,7 @@ if (( $+commands[fnm] )); then
   eval "$(fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines=false --shell zsh)"
 fi
 
-eval "$(zoxide init zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 

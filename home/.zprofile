@@ -17,7 +17,7 @@ fi
 # Editors
 #
 
-export EDITOR='cursor'
+export EDITOR='cursor -w'
 export VISUAL='cursor -w'
 export PAGER='less'
 
