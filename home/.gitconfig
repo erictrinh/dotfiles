@@ -21,55 +21,47 @@
 
   graph = log --graph
   last = log -n 10
-  url = !git remote -v|sed "'s|.*git[:@]\\(.*\\).git.*|http://\\1|;s|m:|m/|'"|uniq|xargs open
+  url = !gh browse
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
   discard = checkout -- .
   rmtag = "!sh -c 'git tag -d $1; git push origin :refs/tags/$1'"
-	lg = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
-
-[push]
-  default = simple
+  lg = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
 
 [core]
-  editor = vim
   excludesfile = ~/.gitignore
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+
+[push]
+  autoSetupRemote = true
 
 [format]
   pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
-  graph = true
 
 [log]
   abbrevCommit = true
+
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+
+[interactive]
+  diffFilter = diff-so-fancy --patch
 
 # URL shorthands
 # gh:erictrinh/dotfiles
 [url "git@github.com:"]
   insteadOf = "gh:"
   pushInsteadOf = "gh:"
-  pushInsteadOf = "git://github.com/"
 
 # gist:1234567
 [url "git@gist.github.com:"]
   insteadOf = "gist:"
   pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[color]
-	ui = auto
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
-[init]
-	defaultBranch = main
