@@ -6,6 +6,8 @@ brew 'zoxide'
 brew 'diff-so-fancy'
 brew 'gh'
 brew 'mas'
+brew 'fnm'
+brew 'pnpm'
 
 cask 'qlmarkdown'
 cask 'suspicious-package'

@@ -30,6 +30,10 @@ read -r "?Sign in to the App Store, then press Return to continue. "
 # Apps and CLI tools. One failed cask shouldn't stop the rest of the setup.
 brew bundle --file="$DOTFILES/Brewfile" || print -u2 "brew bundle had failures; rerun it once setup finishes"
 
+# Node: install the current LTS with fnm and make it the default.
+fnm install --lts
+fnm default lts-latest
+
 # Prezto
 if [[ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"

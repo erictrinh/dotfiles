@@ -29,12 +29,10 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'utility' \
   'completion' \
-  'fasd' \
   'osx' \
   'git' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'ruby' \
   'prompt'
 
 #
