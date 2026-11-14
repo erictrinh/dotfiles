@@ -1,14 +1,14 @@
 config = {
   F = 'Finder',
-  H = 'Things3',
   C = 'Google Chrome',
-  D = 'Slack',
+  S = 'Cursor',
+  R = 'ChatGPT',
+  E = 'Unforgetful',
+  D = 'Obsidian',
+  T = 'cmux',
+
   G = 'GitHub Desktop',
-  S = 'Visual Studio Code',
-  Z = 'zoom.us',
-  O = 'Soulver 3',
-  Y = 'Spotify',
+  O = 'Soulver',
   M = 'Messages',
-  T = 'iTerm',
   P = 'Preview'
 }
