@@ -45,4 +45,14 @@ osascript -e 'tell application "System Events" to tell appearance preferences to
 echo "Setting wallpaper"
 osascript -e "tell application \"System Events\" to tell every desktop to set picture to POSIX file \"$DOTFILES/wallpaper/dlanham-SpaceDoggy3.jpg\""
 
+# Tailscale: put its CLI on PATH (same as the app's "Install CLI" option), then
+# open the app to log in.
+if [[ -d /Applications/Tailscale.app ]]; then
+  sudo mkdir -p /usr/local/bin
+  printf '#!/bin/sh\nexec /Applications/Tailscale.app/Contents/MacOS/Tailscale "$@"\n' | sudo tee /usr/local/bin/tailscale >/dev/null
+  sudo chmod 755 /usr/local/bin/tailscale
+  open -a Tailscale
+  echo "Log in to Tailscale from its menu bar icon and allow the VPN configuration when macOS asks."
+fi
+
 echo "Done. Open a new terminal window to load the shell config."

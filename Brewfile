@@ -23,6 +23,7 @@ cask 'cursor'
 cask 'cmux'
 cask 'chatgpt'
 cask 'obsidian'
+cask 'tailscale-app'
 
 # App Store apps. You must be signed in to the App Store first.
 mas 'Soulver', id: 1508732804
