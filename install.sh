@@ -31,19 +31,17 @@ read -r "?Sign in to the App Store, then press Return to continue. "
 brew bundle --file="$DOTFILES/Brewfile" || print -u2 "brew bundle had failures; rerun it once setup finishes"
 
 # Node: install the current LTS with fnm and make it the default.
-fnm install --lts
-fnm default lts-latest
+if (( $+commands[fnm] )); then
+  fnm install --lts
+  fnm default lts-latest
+else
+  print -u2 "fnm isn't installed, so Node was skipped; rerun brew bundle, then: fnm install --lts && fnm default lts-latest"
+fi
 
 # Prezto
 if [[ ! -d ${ZDOTDIR:-$HOME}/.zprezto ]]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
-
-echo "Enabling dark mode"
-osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-
-echo "Setting wallpaper"
-osascript -e "tell application \"System Events\" to tell every desktop to set picture to POSIX file \"$DOTFILES/wallpaper/dlanham-SpaceDoggy3.jpg\""
 
 # Tailscale: put its CLI on PATH (same as the app's "Install CLI" option), then
 # open the app to log in.
