@@ -23,6 +23,10 @@ if [[ ! -d $DOTFILES/.git ]]; then
 fi
 "$DOTFILES/dot" link
 
+# mas can only install App Store apps after you sign in, and it can't check whether you have.
+open -a "App Store"
+read -r "?Sign in to the App Store, then press Return to continue. "
+
 # Apps and CLI tools. One failed cask shouldn't stop the rest of the setup.
 brew bundle --file="$DOTFILES/Brewfile" || print -u2 "brew bundle had failures; rerun it once setup finishes"
 
