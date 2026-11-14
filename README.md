@@ -8,7 +8,7 @@ To bootstrap a new system, run
 
 This installs Homebrew, clones this repo into `~/dotfiles` (set `DOTFILES` to change that),
 links the dotfiles, and installs everything in the `Brewfile`. You can also clone this repo
-and run `./install.sh`. Run `./osx.sh` for macOS defaults.
+and run `./install.sh`.
 
 # Managing dotfiles
 
