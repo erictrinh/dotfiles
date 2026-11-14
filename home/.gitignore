@@ -16,3 +16,5 @@
 
 # Bower
 /bower_components
+
+**/.claude/settings.local.json
