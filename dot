@@ -1,0 +1,99 @@
+#!/bin/zsh
+# dot: a homesick replacement with no dependencies beyond zsh.
+#
+#   dot link            symlink everything in ./home into $HOME
+#   dot track <path>…   move files/dirs from $HOME into ./home, link them back, git add
+#   dot <git args>      run git in the repo (dot status, dot pull, dot commit -m …)
+#
+# Entries in ./home are linked whole: a linked directory catches every new file
+# written into it. Paths listed in ./subdirs are not linked themselves; their
+# children are, so apps writing state into e.g. ~/.config stay out of the repo
+# (same as homesick's .homesick_subdir).
+set -euo pipefail
+
+REPO=${0:A:h}
+SRC=$REPO/home
+SUBDIRS_FILE=$REPO/subdirs
+
+SUBDIRS=()
+[[ -f $SUBDIRS_FILE ]] && SUBDIRS=(${${(f)"$(<$SUBDIRS_FILE)"}:#(\#*|)})
+
+is_subdir() { (( ${SUBDIRS[(Ie)$1]} )) }
+
+link_one() {  # link_one <repo path> <home path>
+  local src=$1 dest=$2
+  [[ -L $dest && ${dest:A} == ${src:A} ]] && return
+  if [[ -L $dest ]]; then
+    rm $dest
+  elif [[ -e $dest ]]; then
+    mv $dest $dest.bak.$(date +%Y%m%d%H%M%S)
+    print "backed up ~/${dest#$HOME/}"
+  fi
+  mkdir -p ${dest:h}
+  ln -s $src $dest
+  print "linked ~/${dest#$HOME/}"
+}
+
+link_tree() {  # link_tree <path relative to home/, or empty for the top>
+  local dir=$1 f rel
+  for f in $SRC${dir:+/$dir}/*(DN); do
+    [[ ${f:t} == .DS_Store ]] && continue
+    rel=${dir:+$dir/}${f:t}
+    if is_subdir $rel; then
+      if [[ -L $HOME/$rel ]]; then
+        print -u2 "skipped ~/$rel: it is a symlink but is listed in subdirs. Replace it with a real directory first."
+        continue
+      fi
+      mkdir -p $HOME/$rel
+      link_tree $rel
+    else
+      link_one $f $HOME/$rel
+    fi
+  done
+}
+
+track() {
+  local p rel dest parent
+  for p in "$@"; do
+    p=${p:a}
+    [[ $p == $HOME/* ]] || { print -u2 "$p is not under \$HOME"; return 1 }
+    [[ -e $p ]] || { print -u2 "$p does not exist"; return 1 }
+    rel=${p#$HOME/}
+    dest=$SRC/$rel
+
+    # Already inside a directory that is linked into the repo: just stage it.
+    if [[ ${p:A} == $SRC/* ]]; then
+      git -C $REPO add -- ${p:A}
+      print "~/$rel is already in the repo; staged it"
+      continue
+    fi
+    [[ -L $p ]] && { print -u2 "~/$rel is a symlink to somewhere else; not tracking"; return 1 }
+    [[ -e $dest ]] && { print -u2 "home/$rel already exists in the repo"; return 1 }
+
+    # Every ancestor directory must be a subdir, or `dot link` on a new machine
+    # would link the ancestor whole instead of just this file.
+    parent=${rel:h}
+    while [[ $parent != . ]]; do
+      if ! is_subdir $parent; then
+        SUBDIRS+=($parent)
+        print -- $parent >> $SUBDIRS_FILE
+        print "added $parent to subdirs"
+      fi
+      parent=${parent:h}
+    done
+
+    mkdir -p ${dest:h}
+    mv $p $dest
+    ln -s $dest $p
+    git -C $REPO add -- $dest
+    [[ -f $SUBDIRS_FILE ]] && git -C $REPO add -- $SUBDIRS_FILE
+    print "tracking ~/$rel"
+  done
+}
+
+case ${1:-} in
+  link)  link_tree '' ;;
+  track) shift; (( $# )) || { print -u2 "usage: dot track <path>…"; exit 1 }; track "$@" ;;
+  '')    print -u2 "usage: dot link | dot track <path>… | dot <git args>"; exit 1 ;;
+  *)     git -C $REPO "$@" ;;
+esac

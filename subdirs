@@ -1,0 +1,3 @@
+# Directories whose contents are linked one by one instead of linking the
+# directory itself. `dot track` adds entries automatically when you track a
+# nested file, so a new machine links just that file and not its whole folder.
