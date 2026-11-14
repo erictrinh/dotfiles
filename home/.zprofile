@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='subl'
-export VISUAL='subl'
+export EDITOR='cursor'
+export VISUAL='cursor -w'
 export PAGER='less'
 
 #
@@ -74,3 +74,5 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

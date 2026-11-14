@@ -12,19 +12,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# potential fix for subl command sometimes failing to open dirs
-alias s="open -a 'Sublime Text'"
 alias o="open -a 'Finder'"
 
 # Short-cuts for copy-paste.
 alias c='pbcopy'
 alias p='pbpaste'
-
-# Package managers.
-alias ni='npm install'
-alias nis='npm install --save'
-alias nisd='npm install --save-dev'
-alias nig='npm install --global'
 
 # Defaults for mdfind
 alias f='mdfind -onlyin .'
@@ -63,8 +55,37 @@ function ram() {
   fi
 }
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # zprof
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm current)" ]; then
+      nvm use
+    fi
+  elif [ "$(nvm current)" != "$(nvm version default)" ]; then
+    nvm use default >/dev/null
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+eval "$(zoxide init zsh)"
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+export PATH="$HOME/.local/bin:$PATH"
